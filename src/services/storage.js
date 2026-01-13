@@ -1,5 +1,6 @@
 // File-based storage servisi (Backend API ile)
-const API_BASE_URL = 'http://localhost:3002/api'
+// Production'da VITE_API_URL environment variable kullanılır
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3002/api'
 
 export const storageService = {
   // Tüm widget'ları getir

@@ -44,6 +44,21 @@ npm run build
 
 İlk çalıştırmada otomatik olarak `storage/` klasörü oluşturulacaktır.
 
+## 🚀 Deployment
+
+Bu proje **Railway (Backend) + Vercel (Frontend)** için optimize edilmiştir.
+
+**Hızlı Deployment:**
+```bash
+# Backend'i Railway'e deploy et
+railway up
+
+# Frontend'i Vercel'e deploy et
+vercel --prod
+```
+
+Detaylı deployment talimatları için: **[DEPLOY.md](DEPLOY.md)** dosyasına bakın.
+
 ## 🎯 Kullanım
 
 1. **Sunucuyu Başlat**: `npm run dev` ile projeyi başlatın

@@ -9,15 +9,36 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const app = express()
-const PORT = 3002
+const PORT = process.env.PORT || 3002
 
 // Storage klasörü
 const STORAGE_DIR = path.join(__dirname, '../storage')
 const WIDGETS_DIR = path.join(STORAGE_DIR, 'widgets')
 const IMAGES_DIR = path.join(STORAGE_DIR, 'images')
 
+// CORS ayarları - Production ve Development
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  process.env.FRONTEND_URL, // Railway'den frontend URL
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null
+].filter(Boolean)
+
+// Tüm Vercel preview URL'lerini de kabul et
+const corsOptions = {
+  origin: function (origin, callback) {
+    // origin undefined ise (Postman gibi) veya allowed origins'de ise izin ver
+    if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+      callback(null, true)
+    } else {
+      callback(null, true) // Development için tüm origin'lere izin ver
+    }
+  },
+  credentials: true
+}
+
 // Middleware
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({ extended: true, limit: '50mb' }))
 app.use('/images', express.static(IMAGES_DIR))
