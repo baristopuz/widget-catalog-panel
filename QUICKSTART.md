@@ -20,6 +20,15 @@ railway up
 - Railway dashboard → Settings → Networking → Generate Domain
 - Örnek: `https://your-app.up.railway.app`
 
+**⚠️ Önemli: Volume Storage Ekle (Görseller için)**
+- Railway dashboard → Settings → **Volumes** → New Volume
+- **Mount Path:** `/app/storage`
+- **Name:** `storage`
+- Save → Redeploy
+
+> **Not:** Volume eklemezsen görseller restart sonrası silinir!
+> Detay: [RAILWAY-VOLUME.md](RAILWAY-VOLUME.md)
+
 ---
 
 ### 2️⃣ Frontend (Vercel) - 5 dakika

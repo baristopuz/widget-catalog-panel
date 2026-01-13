@@ -108,6 +108,8 @@ export const storageService = {
 
   // Görsel URL'ini tam path ile getir
   getFullImageUrl(filename) {
-    return `http://localhost:3002${filename}`
+    // API_BASE_URL'den base URL'i al (/api kısmını çıkar)
+    const baseUrl = API_BASE_URL.replace('/api', '')
+    return `${baseUrl}${filename}`
   }
 }
